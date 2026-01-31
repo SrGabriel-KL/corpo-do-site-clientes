@@ -1,0 +1,290 @@
+@import url("https://fonts.googleapis.com/css?famiyl=Poppins:200,300,400,500,600,700,800,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+.logo {
+  min-height: 45vh;
+  min-width: 50vh;
+  margin-top: 30px;
+}
+
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 100svh;
+  background-color: #151515;
+  background-image: url("./img/salão2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.imagem-escura {
+        filter: brightness(1%);
+        /* Reduz o brilho para 50% */
+
+    }
+.imagem-grande {
+         width: 10px;
+}
+.card {
+  position: relative;
+  width: 350px;
+  height: 390px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  transition-delay: 0.5s;
+}
+.card:hover {
+  width: 600px;
+  transition-delay: 0.5s;
+}
+.card .circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card .circle::before {
+  content: "";
+  position: absolute;
+  top: 30;
+  left: 2;
+  right: 2;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  background: #191919;
+  border: 8px solid var(--clr);
+  filter: drop-shadow(0 0 10px var(--clr)) drop-shadow(0 0 60px var(--clr));
+  transition: 0.5s, background 0.5s;
+  transition-delay: 0.75s, 1s;
+}
+.card:hover .circle::before {
+  transition-delay: 0.5s;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background: var(--clr);
+  background-color: black;
+}
+.card .circle .logo {
+  position: relative;
+  width: 2px;
+  transition: 0.5s;
+  transition-delay: 0.5s; 
+}
+.card:hover .circle .logo {
+  transform: scale(0);
+  transition-delay: 0s;
+}
+.card .product_img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0) rotate(315deg);
+  height: 300px;
+  transition: 0.6s ease-in-out;
+}
+.card:hover .product_img {
+  transition-delay: 0.75s;
+  top: 25%;
+  left: 72%;
+  height: 500px;
+  transform: translate(-50%, -50%) scale(1) rotate(15deg);
+}
+.card .content {
+  position: absolute;
+  width: 50%;
+  left: 20%;
+  padding: 20px 20px 20px 20px;
+  opacity: 0;
+  transition: 0.5s;
+  visibility: hidden;
+}
+.card:hover .content {
+  transition-delay: 0.75s;
+  opacity: 1;
+  visibility: visible;
+  left: 20px;
+}
+.card .content h2 {
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+  font-size: 2.5em;
+  line-height: 1em;
+}
+.card .content p {
+  color: rgb(248, 248, 248);
+  
+  
+}
+.card .content a {
+  position: relative;
+  color: white;
+  background: black;
+  padding: 50px 75px;
+  border-radius: 10px;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 18px;
+  margin-top: 80px;
+  margin-bottom: auto;
+  cursor: pointer;
+  white-space: nowrap;
+  margin-left: -30px;
+}
+
+.btn-raios {
+  position: relative;
+  padding: 50px 80px;
+  background: #000;
+  color: #fff;
+  font-weight: 800;
+  font-size: 18px;
+  border-radius: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  z-index: 1;
+  overflow: visible;
+}
+
+/* FUMAÇA */
+.btn-raios::before {
+  content: "";
+  position: absolute;
+  inset: -30px;
+  border-radius: 20px;
+  background: radial-gradient(
+    circle,
+    rgba(255,255,255,0.4),
+    rgba(255,255,255,0.15),
+    transparent 70%
+  );
+  filter: blur(20px);
+  z-index: -2;
+
+  animation: fumaça 3s infinite;
+  opacity: 1;
+}
+
+/* RAIOS */
+.btn-raios::after {
+  content: "";
+  position: absolute;
+  inset: -20px;
+  border-radius: 20px;
+  background:
+    linear-gradient(120deg, transparent 40%, rgba(255,255,255,0.9), transparent 60%),
+    linear-gradient(300deg, transparent 45%, rgba(255,255,255,0.8), transparent 55%);
+  background-size: 200% 200%;
+  filter: blur(1px);
+  z-index: -1;
+
+  animation: raios 0.4s infinite;
+  opacity: 1;
+}
+
+/* ATIVA NO HOVER / TOQUE */
+.btn-raios:hover::before,
+.btn-raios:active::before {
+  animation: fumaça 3s infinite;
+  opacity: 1;
+}
+
+.btn-raios:hover::after,
+.btn-raios:active::after {
+  animation: raios 0.4s infinite;
+  opacity: 1;
+}
+
+/* ANIMAÇÕES */
+@keyframes fumaça {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.1) translateY(-8px);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.3) translateY(-15px);
+    opacity: 0;
+  }
+}
+
+@keyframes raios {
+  0% {
+    background-position: 0% 0%;
+    opacity: 0.8;
+  }
+  100% {
+    background-position: 200% 200%;
+    opacity: 0;
+  }
+}
+
+
+
+
+
+
+/* Mobile */
+@media (max-width: 768px) {
+  .card {
+    width: 200px;
+    height: 200px;
+  }
+
+
+  .card:hover .circle::before {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    background: var(--clr);
+  }
+
+  .card:hover .circle .logo {
+    transform: scale(0);
+  }
+
+  .card:hover .product_img {
+    top: 75%;
+    left: 72%;
+    height: 500px;
+    transform: translate(-50%, -50%) scale(1) rotate(15deg);
+  }
+
+  .card:hover .content {
+    opacity: 1;
+    visibility: visible;
+    left: 20px;
+  }
+}
+
+
+
